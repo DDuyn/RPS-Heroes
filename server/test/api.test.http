@@ -8,7 +8,7 @@ Content-Type: {{contentType}}
 Authorization: ""
 
 {
-    "name": "Fleming",
+    "name": "Capone",
     "user": "DDuyn",
     "class": "Barbarian"
 }
@@ -21,3 +21,12 @@ GET {{url}}/hero/3 HTTP/1.1
 
 ###
 DELETE {{url}}/hero/delete/3 HTTP/1.1
+
+###
+PUT {{url}}/hero/update/3 HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: ""
+
+{
+    "name": "Helena"
+}

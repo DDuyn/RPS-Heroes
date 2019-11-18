@@ -3,7 +3,7 @@ const Common = require('../common/Common')
 const Queries = require('../common/Queries')
 
 module.exports = {
-    GetLastCode: function GetLastCode (Model) {
+    GetLastCode: (Model) => {
         let order = { sort: { Code: -1 }}
         return Queries.FindOne(Common.Query(Model, {}, order))
     }

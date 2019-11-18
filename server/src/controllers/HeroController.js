@@ -27,5 +27,12 @@ module.exports = {
     async DeleteHero (req, res) {
         let data = await HeroRepository.DeleteHero(req.params.code)
         return Common.SendResponse(data, res)
+    },
+    async UpdateHero (req, res) {
+        let hero = new Hero()
+        hero.Name = req.body.name       
+
+        let data = await HeroRepository.UpdateHero(req.params.code, hero)
+        return Common.SendResponse(data, res)
     }
 }

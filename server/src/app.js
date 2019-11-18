@@ -6,7 +6,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 var mongoose = require('mongoose')
-mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ds155492.mlab.com:55492/rpggame`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ds155492.mlab.com:55492/rpggame`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error'))
 db.once('open', function (callback) {
