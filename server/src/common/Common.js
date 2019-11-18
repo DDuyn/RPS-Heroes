@@ -20,7 +20,6 @@ module.exports = {
         }
     },
     SendResponse: function SendResponse (obj, response) {
-        console.log('SendResponse', obj.length)
         if (obj.length > 0 || obj !== 'undefined') {
             response.send({
                 Status: 200,

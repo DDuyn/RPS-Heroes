@@ -8,8 +8,7 @@ Content-Type: {{contentType}}
 Authorization: ""
 
 {
-    "code": 3,
-    "name": "Heidegger",
+    "name": "Fleming",
     "user": "DDuyn",
     "class": "Barbarian"
 }

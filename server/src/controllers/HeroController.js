@@ -1,4 +1,5 @@
 const Common = require('../common/Common')
+const CommonRepository = require('../repositories/CommonRepository')
 const HeroRepository = require('../repositories/HeroRepository')
 const Hero = require('../models/Hero')
 
@@ -6,8 +7,8 @@ module.exports = {
     async CreateHero (req, res) {
         let hero = new Hero()
         
-
-        hero.Code = req.body.code
+        let lastHero = await CommonRepository.GetLastCode(Hero)
+        hero.Code = lastHero.Code + 1
         hero.Name = req.body.name
         hero.User = req.body.user
         hero.Class = req.body.class

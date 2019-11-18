@@ -2,12 +2,12 @@ const Common = require('./Common')
 
 module.exports = {
     Find: function Find (Query) {
-        return Query.Model.find(Query.Filter, {}, Query.order)
+        return Query.Model.find(Query.Filter, {}, Query.Order)
             .then(data => { return data })
             .catch(e => { console.error(e) })
     },
     FindOne: function FindOne (Query) {
-        return Query.Model.findOne(Query.Filter, {}, Query.order)
+        return Query.Model.findOne(Query.Filter, {}, Query.Order)
             .then(data => { return data })
             .catch(e => { console.error(e) })
     },
