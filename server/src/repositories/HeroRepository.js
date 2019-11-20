@@ -27,6 +27,38 @@ module.exports = {
         let filter = {Code: Code}
         let update = {Name: Hero.Name}
         return Queries.UpdateOne(Common.Query(model, filter, null, null, update))
+    },
+    GetHeroStats: (Code) => {
+        let model = Common.GetModel(Enum.MODELS.HEROSTATS)
+        let filter = {HeroCode: Code}
+        return Queries.FindOne(Common.Query(model, filter))
+    },
+    CreateHeroStats: (Stats) => {
+        return Queries.Save(Stats)
+    },
+    DeleteHeroStats: (Code) => {
+        let model = Common.GetModel(Enum.MODELS.HEROSTATS)
+        let filter = {HeroCode: Code}
+        return Queries.DeleteOne(Common.Query(model, filter))
+    },
+    AddExperience: (Code, Stats) => {
+        let model = Common.GetModel(Enum.MODELS.HEROSTATS)
+        let filter = {HeroCode: Code}
+        let update = {
+            Level: Stats.Level,
+            TotalExperience: Stats.TotalExperience,
+            ExperienceNeeded: Stats.ExperienceNeeded,
+        }
+        return Queries.UpdateOne(Common.Query(model, filter, null, null, update))
+    },
+    UpgradeHeroStats: (Code, Stats) => {
+        let model = Common.GetModel(Enum.MODELS.HEROSTATS)
+        let filter = {HeroCode: Code}
+        let update = {
+            Life: Stats.Life,
+            Strength: Stats.Strength,
+            Resistance: Stats.Resistance
+        }
+        return Queries.UpdateOne(Common.Query(model, filter, null, null, update))
     }
-
 }

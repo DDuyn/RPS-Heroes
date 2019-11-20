@@ -1,11 +1,14 @@
 const Common = require('../common/Common')
+const HeroUtils = require('../common/HeroUtils')
 const CommonRepository = require('../repositories/CommonRepository')
 const HeroRepository = require('../repositories/HeroRepository')
 const Hero = require('../models/Hero')
 
+
 module.exports = {
     async CreateHero (req, res) {
         let hero = new Hero()
+        let data = null
         
         let lastHero = await CommonRepository.GetLastCode(Hero)
         hero.Code = lastHero.Code + 1
@@ -13,7 +16,16 @@ module.exports = {
         hero.User = req.body.user
         hero.Class = req.body.class
 
-        let data = await HeroRepository.CreateHero(hero)
+        let heroCreated = await HeroRepository.CreateHero(hero)
+        let heroStatsCreated = await HeroRepository.CreateHeroStats(HeroUtils.CreateHero(hero))
+
+        if (heroCreated !== null && heroStatsCreated !== null) {
+            data = {
+                hero: heroCreated,
+                heroStats: heroStatsCreated
+            }
+        }
+
         return Common.SendResponse(data, res)
     },
     async GetAllHeroesByUser (req, res) {        
@@ -22,10 +34,30 @@ module.exports = {
     },
     async GetHero (req, res) {
         let hero = await HeroRepository.GetHero(req.params.code)
-        return Common.SendResponse(hero, res)
+        let heroStats =  await HeroRepository.GetHeroStats(req.params.code)
+        HeroUtils.CreateHero(hero)
+        let data = null
+        if (hero !== null && heroStats !== null) {
+            data = {
+                hero: hero,
+                heroStats: heroStats
+            }
+        }
+
+        return Common.SendResponse(data, res)
     },
     async DeleteHero (req, res) {
-        let data = await HeroRepository.DeleteHero(req.params.code)
+        let heroDeleted = await HeroRepository.DeleteHero(req.params.code)
+        let heroStatsDeleted = await HeroRepository.DeleteHeroStats(req.params.code)
+        let data = null
+
+        if (heroDeleted !== null && heroStatsDeleted !== null) {
+            data = {
+                hero: heroDeleted,
+                heroStatsDeleted: heroStatsDeleted
+            }
+        }
+
         return Common.SendResponse(data, res)
     },
     async UpdateHero (req, res) {

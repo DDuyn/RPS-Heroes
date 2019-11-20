@@ -1,5 +1,11 @@
 module.exports = {
     MODELS: MODELS = {
-        HERO: 'Hero'
+        HERO: 'Hero',
+        HEROSTATS: 'HeroStats'
+    },
+    CLASSES: CLASSES = {
+        BARBARIAN: 'Barbarian',
+        MAGE: 'Mage',
+        DRUID: 'Druid'
     }
 }
