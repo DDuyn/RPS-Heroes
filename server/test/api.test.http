@@ -53,3 +53,6 @@ Authorization: ""
     },
     "ExpGained": 100
 }
+
+###
+GET {{url}}/classes HTTP/1.1

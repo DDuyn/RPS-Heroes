@@ -1,6 +1,7 @@
 const Enum = require('./Enum')
 const Hero = require('../models/Hero')
 const HeroStats = require('../models/HeroStats')
+const Class = require('../models/Class')
 
 module.exports = {
     GetModel: (Model) => {
@@ -11,6 +12,9 @@ module.exports = {
                 break
             case Enum.MODELS.HEROSTATS:
                 model = HeroStats
+                break
+            case Enum.MODELS.CLASSES:
+                model = Class
                 break
         }
 

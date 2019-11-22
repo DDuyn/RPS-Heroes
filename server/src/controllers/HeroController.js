@@ -76,6 +76,5 @@ module.exports = {
         heroStats = await HeroRepository.UpgradeHeroStats(hero.Code, heroStats)
 
         return Common.SendResponse(heroStats, res)
-
     }
 }
