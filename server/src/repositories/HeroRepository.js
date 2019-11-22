@@ -57,7 +57,10 @@ module.exports = {
         let update = {
             Life: Stats.Life,
             Strength: Stats.Strength,
-            Resistance: Stats.Resistance
+            Resistance: Stats.Resistance,
+            Level: Stats.Level,
+            TotalExperience: Stats.TotalExperience,
+            ExperienceNeeded: Stats.ExperienceNeeded
         }
         return Queries.UpdateOne(Common.Query(model, filter, null, null, update))
     }

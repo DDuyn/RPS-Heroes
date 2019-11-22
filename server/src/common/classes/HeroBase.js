@@ -4,6 +4,7 @@ class HeroBase {
         this.Strength = Strength
         this.Resistance = Resistance
     }
+
 } 
 
 module.exports = HeroBase

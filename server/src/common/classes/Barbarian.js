@@ -16,6 +16,15 @@ function GenerateBarbarian () {
     return new Barbarian(life, strength, resistance)
 }
 
+function UpgradeStatsBarbarian (Stats) {
+    Stats.Life += Common.GenerateNumber(4,12)
+    Stats.Strength += Common.GenerateNumber(1, 7)
+    Stats.Resistance += Common.GenerateNumber(3, 10)
+
+    return Stats
+}
+
 module.exports = {
-    GenerateBarbarian
+    GenerateBarbarian,
+    UpgradeStatsBarbarian
 }

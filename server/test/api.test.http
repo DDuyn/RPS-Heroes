@@ -30,3 +30,26 @@ Authorization: ""
 {
     "name": "Helena"
 }
+###
+PUT {{url}}/addExperience HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: ""
+
+{
+    "Hero": {
+        "Code": 8,
+        "Name": "Batman",
+        "User": "DDuyn",
+        "Class": "Barbarian"
+    },
+    "HeroStats": {
+        "HeroCode": 8,
+        "Level": 1,
+        "TotalExperience": 0,
+        "ExperienceNeeded": 100,
+        "Life": 179,
+        "Strength": 68,
+        "Resistance": 136
+    },
+    "ExpGained": 100
+}

@@ -1,5 +1,5 @@
 const Common = require('../common/Common')
-const HeroUtils = require('../common/HeroUtils')
+const HeroUtils = require('../common/utils/HeroUtils')
 const CommonRepository = require('../repositories/CommonRepository')
 const HeroRepository = require('../repositories/HeroRepository')
 const Hero = require('../models/Hero')
@@ -35,7 +35,7 @@ module.exports = {
     async GetHero (req, res) {
         let hero = await HeroRepository.GetHero(req.params.code)
         let heroStats =  await HeroRepository.GetHeroStats(req.params.code)
-        HeroUtils.CreateHero(hero)
+
         let data = null
         if (hero !== null && heroStats !== null) {
             data = {
@@ -66,5 +66,16 @@ module.exports = {
 
         let data = await HeroRepository.UpdateHero(req.params.code, hero)
         return Common.SendResponse(data, res)
+    },
+    async UpdateHeroStats (req, res) {
+        let hero = req.body.Hero
+        let heroStats = req.body.HeroStats
+        let expGained = req.body.ExpGained
+        heroStats = HeroUtils.AddExperienceToHero(hero, heroStats, expGained)
+               
+        heroStats = await HeroRepository.UpgradeHeroStats(hero.Code, heroStats)
+
+        return Common.SendResponse(heroStats, res)
+
     }
 }
