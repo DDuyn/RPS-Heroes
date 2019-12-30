@@ -8,8 +8,8 @@ Content-Type: {{contentType}}
 Authorization: ""
 
 {
-    "name": "Superman",
-    "user": "DDuyn",
+    "name": "Artemisa",
+    "user": "Duyn",
     "class": "Barbarian"
 }
 
@@ -17,7 +17,7 @@ Authorization: ""
 
 GET {{url}}/hero/all/DDuyn HTTP/1.1
 ###
-GET {{url}}/hero/8 HTTP/1.1
+GET {{url}}/hero/3 HTTP/1.1
 
 ###
 DELETE {{url}}/hero/delete/10 HTTP/1.1

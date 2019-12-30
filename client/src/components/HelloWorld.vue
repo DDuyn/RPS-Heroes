@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import HeroService from '@/services/HeroService'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -93,32 +93,8 @@ export default {
     }
   },
   mounted () {
-    this.AddExperience()
   },
   methods: {
-    async AddExperience () {
-      let data = {
-        Hero: {
-          Code: 8,
-          Name: 'Batman',
-          User: 'DDuyn',
-          Class: 'Barbarian'
-        },
-        HeroStats: {
-          Level: 1,
-          TotalExperience: 0,
-          ExperienceNeeded: 100,
-          Life: 179,
-          Strength: 68,
-          Resistance: 136
-        }
-      }
-     /* await HeroService.AddExperience({
-        Hero: data.Hero,
-        HeroStats: data.HeroStats,
-        ExpGained: 100
-      }) */
-    }
   }
 }
 </script>

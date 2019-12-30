@@ -29,22 +29,19 @@ module.exports = {
             Update: Update
         }
     },
-    SendResponse: (obj, response) => {
+    CheckObject: (obj) => {       
         if(obj !== null) {
-            if (obj.length > 0 || obj !== 'undefined') {
-                response.send({
-                    Status: 200,
-                    data: obj,
-                    message: 'Successfully'
-                })
-            }
-        }else{
-            response.send({
-                Status: 404,
-                data: null,
-                message: 'Not Found'
-            })
+            if (obj.length > 0 || obj !== 'undefined') return true
+            else return false
         }
+        return false
+    },
+    SendNotFound: (response) => {
+        response.send({
+            Status: 404,
+            data: null,
+            message: 'Not Found'
+        })
     },
     GenerateNumber: (min, max) => {
         return Math.floor(Math.random() * (max - min)) + min
